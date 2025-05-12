@@ -18,8 +18,8 @@ public class CameraReset : MonoBehaviour
     void Update()
     {
         // Debug.Log("[CS135 Lab2] Current pos: " + CameraRig.eulerAngles);
-        Debug.Log("[CS135 Lab2] Current pos (Parent): " + transform.position);
-        Debug.Log("[CS135 Lab2] Current pos (Rig): " + CameraRig.transform.position);
+        // Debug.Log("[CS135 Lab2] Current pos (Parent): " + transform.position);
+        // Debug.Log("[CS135 Lab2] Current pos (Rig): " + CameraRig.transform.position);
         if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch)){
             Debug.Log("[CS135 Lab2] Position before: " + CameraRig.transform.position);
             // Debug.Log("[CS135 Lab2] Rotation before: " + CameraRig.eulerAngles);
@@ -32,7 +32,14 @@ public class CameraReset : MonoBehaviour
 
         if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch)){
             Debug.Log("[CS135 Lab2] camera rotation before is: " + transform.eulerAngles);
-            transform.Rotate(0, 180, 0, Space.World); // Rotate along y-axis, to rotate perspective, x axis would up down i think, and z would be useless, just upside down?
+            transform.RotateAround(transform.position, Vector3.up, 180); // Rotate along y-axis, to rotate perspective, x axis would up down i think, and z would be useless, just upside down?
+
+            // Transform currentTransform = this.transform;
+            // currentTransform.rotation = Quaternion.Euler(currentTransform.rotation.eulerAngles.x, currentTransform.rotation.eulerAngles.y + 180, currentTransform.rotation.eulerAngles.z);
+
+            // Transform currentTransform = CameraRig.transform;
+            // currentTransform.rotation = Quaternion.Euler(currentTransform.rotation.eulerAngles.x, currentTransform.rotation.eulerAngles.y + 180, currentTransform.rotation.eulerAngles.z);
+            
             Debug.Log("[CS135 Lab2] Rotating 180 deg??");
             Debug.Log("[CS135 Lab2] camera rotation before is: " + transform.eulerAngles);
         }       
